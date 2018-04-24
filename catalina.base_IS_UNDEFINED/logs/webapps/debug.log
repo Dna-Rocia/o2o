@@ -1,0 +1,28 @@
+2018-04-24 09:13:21.705 [main]DEBUGcom.royail.o2o.utils.ImgUtils-current >>>>  relative is:upload\item\shop\19\2018042409132138231.jpg
+2018-04-24 09:13:21.715 [main]DEBUGcom.royail.o2o.utils.ImgUtils-current >>>>  complete addr is:upload\item\shop\19\2018042409132138231.jpg
+2018-04-24 09:13:21.998 [main]DEBUGc.r.o2o.dao.split.DynamicDataSourceInterceptor-设置方法[com.royail.o2o.dao.ProductDao.insertProduct] use[master]Strategy,SqlCommanType[INSERT]..
+2018-04-24 09:13:22.001 [main]DEBUGcom.royail.o2o.dao.split.DynamicDataSourceHolder-所使用的数据源为： master
+2018-04-24 09:13:22.014 [main]DEBUGcom.royail.o2o.dao.ProductDao.insertProduct-==>  Preparing: insert into tb_product (product_name,product_desc,img_addr,normal_price,promotion_price,priority,create_time,last_edit_time,enable_status,product_category_id,shop_id) values (?,?,?,?,?,?,?,?,?, ?,?) 
+2018-04-24 09:13:22.066 [main]DEBUGcom.royail.o2o.dao.ProductDao.insertProduct-==> Parameters: 商品1(String), 测试商品1(String), upload\item\shop\19\2018042409132138231.jpg(String), null, null, 3(Integer), 2018-04-24 09:13:21.702(Timestamp), 2018-04-24 09:13:21.702(Timestamp), 1(Integer), 20(Long), 19(Long)
+2018-04-24 09:19:30.401 [main]DEBUGcom.royail.o2o.utils.ImgUtils-current >>>>  relative is:upload\item\shop\19\2018042409193091712.jpg
+2018-04-24 09:19:30.401 [main]DEBUGcom.royail.o2o.utils.ImgUtils-current >>>>  complete addr is:upload\item\shop\19\2018042409193091712.jpg
+2018-04-24 09:19:30.593 [main]DEBUGc.r.o2o.dao.split.DynamicDataSourceInterceptor-设置方法[com.royail.o2o.dao.ProductDao.insertProduct] use[master]Strategy,SqlCommanType[INSERT]..
+2018-04-24 09:19:30.596 [main]DEBUGcom.royail.o2o.dao.split.DynamicDataSourceHolder-所使用的数据源为： master
+2018-04-24 09:19:30.612 [main]DEBUGcom.royail.o2o.dao.ProductDao.insertProduct-==>  Preparing: insert into tb_product (product_name,product_desc,img_addr,normal_price,promotion_price,priority,create_time,last_edit_time,enable_status,product_category_id,shop_id) values (?,?,?,?,?,?,?,?,?, ?,?) 
+2018-04-24 09:19:30.666 [main]DEBUGcom.royail.o2o.dao.ProductDao.insertProduct-==> Parameters: 商品1(String), 测试商品1(String), upload\item\shop\19\2018042409193091712.jpg(String), null, null, 3(Integer), 2018-04-24 09:19:30.396(Timestamp), 2018-04-24 09:19:30.396(Timestamp), 1(Integer), 20(Long), 19(Long)
+2018-04-24 09:22:37.724 [main]DEBUGcom.royail.o2o.utils.ImgUtils-current >>>>  relative is:upload\item\shop\19\2018042409223783239.jpg
+2018-04-24 09:22:37.725 [main]DEBUGcom.royail.o2o.utils.ImgUtils-current >>>>  complete addr is:upload\item\shop\19\2018042409223783239.jpg
+2018-04-24 09:22:37.919 [main]DEBUGc.r.o2o.dao.split.DynamicDataSourceInterceptor-设置方法[com.royail.o2o.dao.ProductDao.insertProduct] use[master]Strategy,SqlCommanType[INSERT]..
+2018-04-24 09:22:37.921 [main]DEBUGcom.royail.o2o.dao.split.DynamicDataSourceHolder-所使用的数据源为： master
+2018-04-24 09:22:37.932 [main]DEBUGcom.royail.o2o.dao.ProductDao.insertProduct-==>  Preparing: insert into tb_product (product_name,product_desc,img_addr,normal_price,promotion_price,priority,create_time,last_edit_time,enable_status,product_category_id,shop_id) values (?,?,?,?,?,?,?,?,?, ?,?) 
+2018-04-24 09:22:37.977 [main]DEBUGcom.royail.o2o.dao.ProductDao.insertProduct-==> Parameters: 商品1(String), 测试商品1(String), upload\item\shop\19\2018042409223783239.jpg(String), null, null, 3(Integer), 2018-04-24 09:22:37.719(Timestamp), 2018-04-24 09:22:37.719(Timestamp), 1(Integer), 28(Long), 19(Long)
+2018-04-24 09:22:37.980 [main]DEBUGcom.royail.o2o.dao.ProductDao.insertProduct-<==    Updates: 1
+2018-04-24 09:22:37.989 [main]DEBUGcom.royail.o2o.utils.ImgUtils-current >>>>  relative is:upload\item\shop\19\2018042409223770779.jpg
+2018-04-24 09:22:37.990 [main]DEBUGcom.royail.o2o.utils.ImgUtils-current >>>>  complete addr is:upload\item\shop\19\2018042409223770779.jpg
+2018-04-24 09:22:38.081 [main]DEBUGcom.royail.o2o.utils.ImgUtils-current >>>>  relative is:upload\item\shop\19\2018042409223856141.jpg
+2018-04-24 09:22:38.081 [main]DEBUGcom.royail.o2o.utils.ImgUtils-current >>>>  complete addr is:upload\item\shop\19\2018042409223856141.jpg
+2018-04-24 09:22:38.126 [main]DEBUGc.r.o2o.dao.split.DynamicDataSourceInterceptor-设置方法[com.royail.o2o.dao.ProductImgDao.insertProductImg] use[master]Strategy,SqlCommanType[INSERT]..
+2018-04-24 09:22:38.127 [main]DEBUGcom.royail.o2o.dao.split.DynamicDataSourceHolder-所使用的数据源为： master
+2018-04-24 09:22:38.168 [main]DEBUGcom.royail.o2o.dao.ProductImgDao.insertProductImg-==>  Preparing: insert into tb_product_img (img_addr,img_desc,priority,create_time,product_id) values ( ?, ?, ?, ?, ? ) , ( ?, ?, ?, ?, ? ) 
+2018-04-24 09:22:38.170 [main]DEBUGcom.royail.o2o.dao.ProductImgDao.insertProductImg-==> Parameters: upload\item\shop\19\2018042409223770779.jpg(String), null, null, 2018-04-24 09:22:38.08(Timestamp), 4(Long), upload\item\shop\19\2018042409223856141.jpg(String), null, null, 2018-04-24 09:22:38.122(Timestamp), 4(Long)
+2018-04-24 09:22:38.172 [main]DEBUGcom.royail.o2o.dao.ProductImgDao.insertProductImg-<==    Updates: 2

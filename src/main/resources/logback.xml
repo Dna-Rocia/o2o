@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+	<!-- 定义参数常量    trace < debug < info < warn < error-->
+	<property name ="log.level" value="debug"/>
+	
+	<!-- 文件保留最大的时间  -->
+	<property name="log.maxHistory" value="30"/>
+
+	<!-- 日志存储的根路径  catalina.base：表示tomcat的实例的根目录-->
+	<property name= "log.filePath" value="${catalina.base}/logs/webapps"/>
+
+	<!-- 日志展示的格式 -->
+	<property name= "log.pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread]%-5level%logger{50}-%msg%n"/>
+	
+	
+		<!--
+	下边定义的appender   让文件输出在控制台
+	  -->
+	
+	
+	<!-- 控制台设置 -->
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+	
+		<encoder>
+			<pattern>${log.pattern}</pattern>
+		</encoder>
+	
+	</appender>
+	
+	
+	
+	
+	
+	
+	<!--
+	下边定义的appender   让文件输出在三个级别（debug, info, error）的日志文件中
+	  -->
+	
+	
+		<!-- Debug(日志滚动更新展示) -->
+	<appender name= "debugAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 文件路径 -->
+		<file>${log.filePath}/debug.log</file>
+		
+		<!-- 滚动策略 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 文件名称 /debug.log  上边的文件要是写满了，就进行保存至这个路径下，后自动压缩-->
+			<fileNamePattern>${log.filePath}/debug/debug.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+			
+			<!-- 最大保存历史数量  上边默认的是30个压缩文件，以至于一天一个压缩文件 -->
+			<maxHistory>${log.maxHistory}</maxHistory>
+			
+		</rollingPolicy>		
+		
+		<!-- 指定的文件格式  先转成字符串——>以字符串形式加进文件当中    -->
+		<encoder>
+			<pattern>${log.pattern}</pattern>
+		</encoder>
+		
+		<!-- 过滤器 -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>DEBUG</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		
+		
+	</appender>
+	
+	
+
+	
+		<!-- Info(日志滚动更新展示) -->
+	<appender name= "infoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 文件路径 -->
+		<file>${log.filePath}/info.log</file>
+		
+		<!-- 滚动策略 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 文件名称 -->
+			<fileNamePattern>${log.filePath}/info/info.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+			
+			<!-- 最大保存历史数量  -->
+			<maxHistory>${log.maxHistory}</maxHistory>
+			
+		</rollingPolicy>		
+		
+		<!-- 指定的文件格式  先转成字符串——>以字符串形式加进文件当中    -->
+		<encoder>
+			<pattern>${log.pattern}</pattern>
+		</encoder>
+		
+		<!-- 过滤器 -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		
+		
+	</appender>
+	
+	
+	
+		
+		<!-- Error(日志滚动更新展示) -->
+	<appender name= "errorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 文件路径 -->
+		<file>${log.filePath}/error.log</file>
+		
+		<!-- 滚动策略 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- 文件名称 -->
+			<fileNamePattern>${log.filePath}/error/error.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+			
+			<!-- 最大保存历史数量  -->
+			<maxHistory>${log.maxHistory}</maxHistory>
+			
+		</rollingPolicy>		
+		
+		<!-- 指定的文件格式  先转成字符串——>以字符串形式加进文件当中    -->
+		<encoder>
+			<pattern>${log.pattern}</pattern>
+		</encoder>
+		
+		<!-- 过滤器 -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		
+		
+	</appender>
+
+
+
+	<!-- 存放日志对象，并告诉logback注意观察哪个package信息 -->
+	<logger name="com.royail.o2o" level="${log.level}" additivity="true">
+		<appender-ref ref="debugAppender"/>
+		<appender-ref ref="infoAppender"/>
+		<appender-ref ref="errorAppender"/>
+	</logger>
+	
+	
+	<!-- 根log -->
+	<root level="info">
+		<appender-ref ref="consoleAppender"/>
+	</root>
+	
+	
+	
+</configuration>

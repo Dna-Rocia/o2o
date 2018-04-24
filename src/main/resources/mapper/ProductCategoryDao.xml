@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.royail.o2o.dao.ProductCategoryDao">
+
+	<insert id="insertProductCategory" parameterType="com.royail.o2o.entity.ProductCategory">
+		insert into
+			tb_product_category
+				(product_category_name,priority,shop_id,create_time)
+		values
+				(#{productCategoryName},#{priority},#{shopId},#{createTime})
+	</insert>
+
+	<delete id="deleteProductCategory" >
+		delete from  
+			tb_product_category
+		where
+			product_category_id = #{productCategoryId}
+		and 
+			shop_id = #{shopId}
+	</delete>
+
+	<insert id="insertProductCategorys" parameterType="java.util.List"> 
+		insert into
+			tb_product_category
+			(
+				product_category_name,
+				priority,
+				shop_id,
+				create_time
+			)
+		values
+		<foreach collection="list" item="pc" index="index" separator=",">
+			(
+				#{pc.productCategoryName},
+				#{pc.priority},
+				#{pc.shopId},
+				#{pc.createTime}
+			)
+		</foreach>
+	</insert>
+
+	<select id="listProductCategory" resultType="com.royail.o2o.entity.ProductCategory">
+		SELECT
+		product_category_id,
+		product_category_name,
+		priority,
+		shop_id
+		FROM
+		tb_product_category
+		<include refid="listCondition" />
+		ORDER BY
+		priority DESC
+	</select>
+
+	<sql id="listCondition">
+		<where>
+			<if test="productCategoryCondition.shopId != null">
+				and shop_id = #{productCategoryCondition.shopId}
+			</if>
+			<if test="productCategoryCondition.productCategoryName != null">
+				and product_category_name like
+				'%#{productCategoryCondition.productCategoryName}%'
+			</if>
+		</where>
+	</sql>
+
+
+	<select id="listProductCategoryCount" resultType="int">
+		SELECT
+		count(*)
+		FROM
+		tb_product_category
+		<include refid="listCondition" />
+	</select>
+
+
+</mapper>
+ 
+
+ 
+ 
+ 
+ 
+ 
