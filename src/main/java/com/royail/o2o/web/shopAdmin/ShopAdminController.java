@@ -7,31 +7,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "shopadmin")
 public class ShopAdminController {
-	
-	
-	
+
 	@RequestMapping(value = "/shopoperation", method = RequestMethod.GET)
 	public String  shopOperation() {
-		
-		return "shop/shopOperation";
+		return RequestRouteManagement.SHOP_OPERATION.getFinalUrl();
 		
 	}
 
-	
-	
-	
 	@RequestMapping(value = "/shoplist", method = RequestMethod.GET)
 	public String  shopList() {
-		return "shop/shopList";
-		
+		return RequestRouteManagement.SHOP_LIST.getFinalUrl();
 	}
 	
 	
-	
-
 	@RequestMapping(value = "/shopmanagement", method = RequestMethod.GET)
 	public String  shopManagement() {
-		return "shop/shopManagement";
+		return RequestRouteManagement.SHOP_MANAGEMENT.getFinalUrl();
 		
 	}
 	
@@ -39,22 +30,21 @@ public class ShopAdminController {
 	
 	@RequestMapping(value = "/productcategorylist", method = RequestMethod.GET)
 	public String  productCategoryList() {
-		return "shop/productCategory";
+		return RequestRouteManagement.SHOP_PRODUCT_CATEGORY_LIST.getFinalUrl();
 		
 	}
 	
 	
 	@RequestMapping(value = "/submit" , method = RequestMethod.POST)
-	public String  productCategoryInsert() {
-		return "shop/productCategory";
+	public String  productCategoryInsert() {		
+		return RequestRouteManagement.SHOP_PRODUCT_CATEGORY_SUBMIT.getFinalUrl();
 		
 	}
 	
 	
-	
-	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String  productCategoryDelete() {
+		//转发商品类别的管理页面------删除
 		return "shop/productCategory";
 		
 	}
