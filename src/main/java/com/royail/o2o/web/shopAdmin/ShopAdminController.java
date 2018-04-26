@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "shopadmin")
 public class ShopAdminController {
 
+	/**
+	 * shop的路由（转发）管理
+	 */
+	
 	@RequestMapping(value = "/shopoperation", method = RequestMethod.GET)
 	public String  shopOperation() {
 		return RequestRouteManagement.SHOP_OPERATION.getFinalUrl();
@@ -28,26 +32,44 @@ public class ShopAdminController {
 	
 	
 	
-	@RequestMapping(value = "/productcategorylist", method = RequestMethod.GET)
+	/**
+	 * productCategory 的路由（转发）管理
+	 */
+	
+	@RequestMapping(value = "/category/list", method = RequestMethod.GET)
 	public String  productCategoryList() {
-		return RequestRouteManagement.SHOP_PRODUCT_CATEGORY_LIST.getFinalUrl();
+		return RequestRouteManagement.SHOP_PRODUCT_CATEGORY.getFinalUrl();
 		
 	}
 	
 	
-	@RequestMapping(value = "/submit" , method = RequestMethod.POST)
+	@RequestMapping(value = "/category/submit" , method = RequestMethod.POST)
 	public String  productCategoryInsert() {		
-		return RequestRouteManagement.SHOP_PRODUCT_CATEGORY_SUBMIT.getFinalUrl();
+		return RequestRouteManagement.SHOP_PRODUCT_CATEGORY.getFinalUrl();
 		
 	}
 	
 	
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/category/delete", method = RequestMethod.POST)
 	public String  productCategoryDelete() {
-		//转发商品类别的管理页面------删除
-		return "shop/productCategory";
+		return RequestRouteManagement.SHOP_PRODUCT_CATEGORY.getFinalUrl();
 		
 	}
+	
+	
+	
+	/**
+	 * product 的路由（转发）管理
+	 */
+	@RequestMapping(value = "/product/delete", method = RequestMethod.POST)
+	public String  product() {
+		return RequestRouteManagement.SHOP_PRODUCT.getFinalUrl();
+		
+	}
+	
+	
+	
+	
 	
 	
 }

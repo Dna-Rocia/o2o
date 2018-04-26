@@ -5,13 +5,15 @@ public enum RequestRouteManagement {
 
 	SHOP_OPERATION("shopOperation","跳转至店铺注册/编辑页面"),
 	
-	SHOP_LIST("list","转发至店铺列表页面"),
+	SHOP_LIST("shopList","转发至店铺列表页面"),
 	
 	SHOP_MANAGEMENT("shopManagement","转发至店铺管理页面"),
 	
-	SHOP_PRODUCT_CATEGORY_LIST("productCategory","转发至商品类别管理页面  --列表"),
+	SHOP_PRODUCT_CATEGORY("productCategory","转发至商品类别管理页面  "), //列表、新增、删除
 	
-	SHOP_PRODUCT_CATEGORY_SUBMIT("productCategory","转发至商品类别管理页面 --新增")
+	SHOP_PRODUCT("productOperation","转发至商品操作（新增、编辑）的页面")
+	
+
 	
 	;
 	
