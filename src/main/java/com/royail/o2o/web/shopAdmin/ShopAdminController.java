@@ -36,21 +36,21 @@ public class ShopAdminController {
 	 * productCategory 的路由（转发）管理
 	 */
 	
-	@RequestMapping(value = "/category/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/categorylist", method = RequestMethod.GET)
 	public String  productCategoryList() {
 		return RequestRouteManagement.SHOP_PRODUCT_CATEGORY.getFinalUrl();
 		
 	}
 	
 	
-	@RequestMapping(value = "/category/submit" , method = RequestMethod.POST)
+	@RequestMapping(value = "/categorysubmit" , method = RequestMethod.POST)
 	public String  productCategoryInsert() {		
 		return RequestRouteManagement.SHOP_PRODUCT_CATEGORY.getFinalUrl();
 		
 	}
 	
 	
-	@RequestMapping(value = "/category/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/categorydelete", method = RequestMethod.POST)
 	public String  productCategoryDelete() {
 		return RequestRouteManagement.SHOP_PRODUCT_CATEGORY.getFinalUrl();
 		
@@ -61,7 +61,7 @@ public class ShopAdminController {
 	/**
 	 * product 的路由（转发）管理
 	 */
-	@RequestMapping(value = "/product/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/productmanagement", method = RequestMethod.GET)
 	public String  product() {
 		return RequestRouteManagement.SHOP_PRODUCT.getFinalUrl();
 		

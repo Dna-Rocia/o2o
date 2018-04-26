@@ -30,7 +30,7 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	@Transactional
-	public ShopExecution insertShop(Shop shop,  ImageHolder imageHolder) throws ShopOperationException {
+	public ShopExecution insertShop(Shop shop, ImageHolder imageHolder) throws ShopOperationException {
 		if (null == shop) {
 			return new ShopExecution(ShopStateEnum.NULL_SHOP);
 		}
@@ -70,9 +70,6 @@ public class ShopServiceImpl implements ShopService {
 		}
 		return new ShopExecution(ShopStateEnum.CHECK, shop);
 	}
-	
-	
-	
 
 	private void addShopImg(Shop shop, ImageHolder imageHolder) {
 
@@ -82,9 +79,6 @@ public class ShopServiceImpl implements ShopService {
 
 		shop.setShopImg(shopImgAddr);
 	}
-	
-	
-	
 
 	@Override
 	public Shop findShop(long shopId) {
@@ -92,24 +86,27 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	public ShopExecution updateShop(Shop shop, ImageHolder imageHolder)
-			throws ShopOperationException {
+	public ShopExecution updateShop(Shop shop, ImageHolder imageHolder) throws ShopOperationException {
 		if (shop == null || shop.getShopId() == null) {
 			return new ShopExecution(ShopStateEnum.NULL_SHOP);
 		} else {
-			try {
-				// 1.判断是否需要改变图片信息
-				if (imageHolder.getImage() != null && imageHolder.getImageName() != null && !"".equals( imageHolder.getImageName())) {
+
+			// 1.判断是否需要改变图片信息
+			if (null != imageHolder) {
+				if (imageHolder.getImage() != null && imageHolder.getImageName() != null
+						&& !"".equals(imageHolder.getImageName())) {
 
 					Shop tempShop = shopDao.findShop(shop.getShopId());
 
 					if (tempShop.getShopImg() != null) {
 						ImgUtils.deleteFileOrPath(tempShop.getShopImg());
 					}
-					addShopImg(shop,imageHolder);
-				}
-				
 
+					addShopImg(shop, imageHolder);
+				}
+			}
+
+			try {
 				// 2.更新店铺信息
 				shop.setLastEditTime(new Date());
 				int updateNum = shopDao.updateShop(shop);
@@ -121,8 +118,9 @@ public class ShopServiceImpl implements ShopService {
 				}
 
 			} catch (Exception e) {
-				throw new ShopOperationException("updateShop error:"+ e.getMessage());
+				throw new ShopOperationException("updateShop error:" + e.getMessage());
 			}
+
 		}
 	}
 
@@ -131,7 +129,7 @@ public class ShopServiceImpl implements ShopService {
 
 		int shopLength = shopDao.listShopCount(shop);
 		ShopExecution execution = new ShopExecution();
-		
+
 		if (shopLength > 0) {
 			int rowIndex = PageCalculatorUtils.calculatorRowIndex(pageIndex, pageSize);
 			List<Shop> shops = shopDao.listShop(shop, rowIndex, pageSize);
@@ -139,23 +137,11 @@ public class ShopServiceImpl implements ShopService {
 				execution.setShops(shops);
 			}
 			execution.setCount(shopLength);
-		}else {
+		} else {
 			execution.setState(ShopStateEnum.INNER_ERROR.getState());
 		}
-		
+
 		return execution;
 	}
 
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
 }

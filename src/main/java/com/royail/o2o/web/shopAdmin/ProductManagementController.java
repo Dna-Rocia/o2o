@@ -35,7 +35,7 @@ public class ProductManagementController {
 
 	private static final int IMAGEMAXCOUNT = 6;
 
-	@SuppressWarnings("unused")
+	
 	@RequestMapping(value = "/product/insert", method = RequestMethod.POST)
 	@ResponseBody
 	private Map<String, Object> insertProduct(HttpServletRequest request) {
@@ -93,7 +93,7 @@ public class ProductManagementController {
 
 		try {
 			// 尝试获取前端传过来的表单string流并将其转换成product实体类
-			mapper.readValue(productStr, Product.class);
+			product = mapper.readValue(productStr, Product.class);
 
 		} catch (Exception e) {
 			map.put("success", false);
@@ -108,9 +108,7 @@ public class ProductManagementController {
 
 				// 从session中获取当前店铺的id并赋值给product，减少对前端数据的依赖
 				Shop currentShop = (Shop) request.getSession().getAttribute("currentShop");
-				Shop shop = new Shop();
-				shop.setShopId(currentShop.getShopId());
-				product.setShop(shop);
+				product.setShop(currentShop);
 
 				// 执行添加操作
 				ProductExecution execution = productService.insertProduct(product, tImageHolder, pImageHolders);
