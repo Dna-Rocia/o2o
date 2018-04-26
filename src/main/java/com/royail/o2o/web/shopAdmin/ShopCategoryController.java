@@ -21,6 +21,8 @@ public class ShopCategoryController {
 
 	@Autowired
 	private ShopCategoryService shopCategoryService;
+	
+	
 	/**
 	 * 店铺类别列表
 	 * @param request
