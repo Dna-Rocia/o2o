@@ -25,6 +25,14 @@ public class ProductCategory {
 
 
 
+	public ProductCategory(Long productCategoryId) {
+		this.productCategoryId = productCategoryId;
+	}
+
+
+
+
+
 	public ProductCategory( Long shopId, String productCategoryName, Integer priority,Date createTime) {
 		this.shopId = shopId;
 		this.productCategoryName = productCategoryName;

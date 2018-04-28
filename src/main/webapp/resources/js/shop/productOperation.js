@@ -55,7 +55,7 @@ $(function() {
 								// 获取原本的商品类别以及该店铺的所有商品类别列表
 								var optionHtml = '';
 								var optionArr = data.productCategoryList;
-								var optionSelected = product.product.productCategory.productCategoryId;
+								var optionSelected = product.productCategory.productCategoryId;
 
 								// 生成前端的Html商品类别列表，并默认选择前的商品类别
 								optionArr

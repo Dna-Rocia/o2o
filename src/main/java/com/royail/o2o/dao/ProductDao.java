@@ -14,10 +14,15 @@ public interface ProductDao {
 	int deleteProduct(@Param("productId") long productId, @Param("productCategoryId") long productCategoryId, @Param("shopId")long shopId);
 	
 	
-	//int updateProduct(Product product);
+	int updateProduct(Product product);
 	
 	
-	//Product findProduct(Product product);
+	int updatePcToNull(long productCategoryId);
+	
+	
+	Product findProduct(Long productId);
+	
+	
 	
 	
 	//List<Product> listProduct(@Param("product")Product product,@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);

@@ -23,4 +23,21 @@
 	</insert>
 
 
+	<delete id="deleteImgByProductId" parameterType="Long">
+		delete from
+			tb_product_img
+		where
+			product_id = #{productId}	
+	</delete>
+
+
+	<select id="listProductImg" parameterType="Long" resultType="com.royail.o2o.entity.ProductImg">
+		select 
+			*
+		from 
+			tb_product_img
+		where
+			product_id = #{productId}
+	</select>
+
 </mapper>

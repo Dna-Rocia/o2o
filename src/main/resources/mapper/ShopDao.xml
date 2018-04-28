@@ -47,6 +47,7 @@
 		<result column="shop_img" property="shopImg" />
 		<result column="phone" property="phone" />
 		<result column="priority" property="priority" />
+		<result column="create_time" property="createTime" />
 		<result column="last_edit_time" property="lastEditTime" />
 		<result column="enable_status" property="enableStatus" />
 		<result column="advice" property="advice" />

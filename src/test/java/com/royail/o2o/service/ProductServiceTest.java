@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,6 +28,7 @@ public class ProductServiceTest extends BaseTest{
 	private ProductService productService;
 	
 	@Test
+	@Ignore
 	public void  insertProduct() throws ShopOperationException,FileNotFoundException {
 		
 		Product product = new Product();
@@ -59,6 +61,46 @@ public class ProductServiceTest extends BaseTest{
 		list.add(new ImageHolder(file2.getName(), inputStream2));	
 		
 		ProductExecution execution = productService.insertProduct(product, imageHolder, list);
+		
+		assertEquals(ProductStateEnum.SUCCESS.getState(),execution.getState());
+		
+	}
+	
+	
+	
+	
+	@Test
+	public void  updateProduct() throws ShopOperationException,FileNotFoundException {
+		
+		Product product = new Product();
+		Shop shop = new Shop();
+		shop.setShopId(1l);
+		ProductCategory productCategory = new ProductCategory();
+		
+		productCategory.setProductCategoryId(29l);
+		product.setProductId(7l);
+		product.setShop(shop);
+		product.setProductCategory(productCategory);
+		product.setProductName("nt测试update");
+		product.setProductDesc("update  Junit测试商品");
+	
+		
+		//创建缩略图文件流
+		File file = new File("D://image//yd.jpg");
+		FileInputStream inputStream = new FileInputStream(file);
+		ImageHolder imageHolder = new ImageHolder(file.getName(),inputStream);
+		
+		//创建商品详情图片流
+		File file1 = new File("D://image//lufei.jpg");
+		FileInputStream inputStream1 = new FileInputStream(file1);
+		File file2 = new File("D://image//face.jpg");
+		FileInputStream inputStream2 = new FileInputStream(file2);
+		
+		List<ImageHolder> list = new ArrayList<ImageHolder>();
+		list.add(new ImageHolder(file1.getName(), inputStream1));		
+		list.add(new ImageHolder(file2.getName(), inputStream2));	
+		
+		ProductExecution execution = productService.updateProduct(product, imageHolder, list);
 		
 		assertEquals(ProductStateEnum.SUCCESS.getState(),execution.getState());
 		

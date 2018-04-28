@@ -5,81 +5,51 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.royail.o2o.enums.ShopStateEnum;
 
-
 public class Shop {
 
-	private Long 
-					shopId;
-	
-	private String 
-					shopName, shopDesc,shopAddr, phone, shopImg, advice;
-	//advice:超级管理员给店家的提醒
-	
-	private Integer 
-					priority,enableStatus;
-	//enableStatus:-1.不可用 0.审核中 1.可用
-	
-	private Date 
-					createTime, lastEditTime;
+	private Long shopId, ownerId;
 
-	private Area 
-					area;
-	
-	private PersonInfo 
-					owner;
-	
-	private ShopCategory 
-					shopCategory;
-	
-	
-	
-	
-	
-	//constructor
+	private String shopName, shopDesc, shopAddr, phone, shopImg, advice;
+	// advice:超级管理员给店家的提醒
 
-//	public Shop() {
-//		this.shopId = 1l;
-//		this.shopName = "老大铺";
-//		this.shopDesc = "AAA描述";
-//		this.shopAddr = "广州市天河区";
-//		this.lastEditTime = new Date();
-//	}
+	private Integer priority, enableStatus;
+	// enableStatus:-1.不可用 0.审核中 1.可用
 
-	
-	
+	private Date createTime, lastEditTime;
+
+	private Area area;
+
+	private PersonInfo owner;
+
+	private ShopCategory shopCategory;
+
+	// constructor
+
 	public Shop() {
-		
+
 	}
 
-	
-	
-	
-//测试增加的时候
-	public Shop(String insert,long num) {
+	public Shop(Long shopId) {
+		this.shopId = shopId;
+	}
+
+	// 测试增加的时候
+	public Shop(String insert, long num) {
 		if (insert.equals("insert")) {
 			this.shopName = "我的测试铺";
 			this.shopDesc = "ms";
 			this.shopAddr = "dz";
 			this.phone = "dh";
 			this.advice = "审核中";
-			this.enableStatus = ShopStateEnum.CHECK.getState();	
-		}else {
+			this.enableStatus = ShopStateEnum.CHECK.getState();
+		} else {
 			this.shopName = "老罗锅书铺";
 			this.shopAddr = "同在地球村";
 			this.shopId = num;
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	//setter&&getter
-
-
-
+	// setter&&getter
 
 	@Override
 	public String toString() {
@@ -89,17 +59,17 @@ public class Shop {
 				+ ", area=" + area + ", owner=" + owner + ", shopCategory=" + shopCategory + "]";
 	}
 
+	public Long getOwnerId() {
+		return ownerId;
+	}
 
-
-	
-	
+	public void setOwnerId(Long ownerId) {
+		this.ownerId = ownerId;
+	}
 
 	public Long getShopId() {
 		return shopId;
 	}
-
-
-
 
 	public void setShopId(Long shopId) {
 		this.shopId = shopId;
@@ -208,13 +178,5 @@ public class Shop {
 	public void setShopCategory(ShopCategory shopCategory) {
 		this.shopCategory = shopCategory;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

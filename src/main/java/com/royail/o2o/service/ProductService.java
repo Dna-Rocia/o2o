@@ -11,7 +11,9 @@ public interface ProductService {
 
 	ProductExecution insertProduct(Product product,ImageHolder imageHolder,List<ImageHolder> productImgs) throws ProductOperationException;
 	
+	Product findProductById(long productId);
 	
+	ProductExecution updateProduct(Product product,ImageHolder thumbnail,List<ImageHolder> productImgs)throws ProductOperationException;
 	
 }
 		

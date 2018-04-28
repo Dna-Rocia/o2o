@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.royail.o2o.BaseTest;
 import com.royail.o2o.entity.ProductImg;
 
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ProductImgDaoTest extends BaseTest{
 	
 	@Autowired
@@ -20,7 +23,7 @@ public class ProductImgDaoTest extends BaseTest{
 	
 	
 	@Test
-	public void insertProductImgs()throws Exception {
+	public void AinsertProductImgs()throws Exception {
 		
 		
 		List<ProductImg> productImgs = new ArrayList<ProductImg>();
@@ -34,6 +37,24 @@ public class ProductImgDaoTest extends BaseTest{
 		
 	
 		assertEquals(3,num);
+	}
+	
+	
+	@Test
+	public void BlistProductImgs() throws Exception{
+		List<ProductImg> productImgs = productImgDao.listProductImg(1l);
+		System.out.println(productImgs.toString());
+	}
+	
+	
+	
+	@Test
+	public void CdeleteProductImgs() throws Exception{
+		//删除以上新增的测试数据
+		long productId = 1;
+		int effectNum = productImgDao.deleteImgByProductId(productId);
+		assertEquals(3, effectNum);
+		
 	}
 	
 	

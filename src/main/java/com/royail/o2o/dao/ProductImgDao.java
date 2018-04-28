@@ -10,7 +10,10 @@ public interface ProductImgDao {
 	int insertProductImg(List<ProductImg> productImgs);
 	
 	
+	int deleteImgByProductId(long productId);
 	
+	
+	List<ProductImg> listProductImg(long productId);
 	
 	
 	

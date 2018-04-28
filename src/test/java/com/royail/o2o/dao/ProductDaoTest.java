@@ -2,24 +2,34 @@ package com.royail.o2o.dao;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.royail.o2o.BaseTest;
 import com.royail.o2o.entity.Product;
+import com.royail.o2o.entity.ProductCategory;
+import com.royail.o2o.entity.ProductImg;
 import com.royail.o2o.entity.Shop;
 
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ProductDaoTest extends BaseTest{
 
 	
 	@Autowired
 	private ProductDao productDao;
+	@Autowired
+	private ProductImgDao productImgDao;
 	
 	@Test
-	public void insertProductTest() {
+	@Ignore
+	public void AinsertProductTest() {
 		
 		Product product = new Product();
 		
@@ -36,14 +46,52 @@ public class ProductDaoTest extends BaseTest{
 		shop.setShopId(31l);
 		product.setShop(shop);
 		
-		
 		int num = productDao.insertProduct(product);
 		
 		assertEquals(1,num);
-		
-		
+	
 	}
 	
+	
+	
+	@Test
+	public void BfindProductById() throws Exception{
+		
+		long productId = 12;
+		List<ProductImg> productImgs = new ArrayList<>();
+		productImgs.add(new ProductImg(productId, "图1", "第一张图", 1, new Date()));
+		productImgs.add(new ProductImg(productId, "图2", "第二张图", 2, new Date()));
+		
+		
+		int num = productImgDao.insertProductImg(productImgs);
+		assertEquals(2, num);
+		
+		
+		Product product = productDao.findProduct(productId);
+		assertEquals(10, product.getProductImgList().size());
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+product.getProductImgList().get(0).toString());
+		
+		num = productImgDao.deleteImgByProductId(productId);
+		assertEquals(10, num);
+	}
+	
+	
+	@Test
+	public void CupdateProduct()throws Exception{
+		Product product = new Product(5l, "jnCe测试商品1", "测试商品的描述",null, null, null, 5, null,  new ProductCategory(9l), new Shop(1l));
+		
+		int num = productDao.updateProduct(product);
+			
+		assertEquals(1, num);
+	}
+	
+	
+	
+/*	@Test
+	public void DupdateProductCategoryToNull(){
+		productDao.updateProduct(product)
+	}
+	*/
 	
 	
 	

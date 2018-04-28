@@ -30,10 +30,40 @@ public class Product {
 					shop;
 	
 	
+	
+	public Product() {
+		
+	}	
+	
+	
+	
+	
+	
+	
+	public Product(Long productId, String productName, String productDesc, String imgAddr, String normalPrice,
+			String promotionPrice, Integer priority, Integer enableStatus,  ProductCategory productCategory, Shop shop) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.productDesc = productDesc;
+		this.imgAddr = imgAddr;
+		this.normalPrice = normalPrice;
+		this.promotionPrice = promotionPrice;
+		this.priority = priority;
+		this.enableStatus = enableStatus;
+		this.productCategory = productCategory;
+		this.shop = shop;
+	}
+
+
+
+
+
+
 	//setter&&getter
 	
 	
-	
+
 	public Long getProductId() {
 		return productId;
 	}
