@@ -228,7 +228,7 @@ $(function(){
 	});
 
 	$('#me').click(function() {
-		$.openPanel('#panel-righ-demo');
+		$.openPanel('#panel-right-demo');
 	});
 
 	//初始化页面

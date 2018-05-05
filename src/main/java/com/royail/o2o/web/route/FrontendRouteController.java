@@ -23,8 +23,11 @@ public class FrontendRouteController {
 	}
 	
 	
-	
-	
+
+	@RequestMapping(value="/shopdetail",method=RequestMethod.GET)
+	private String  shopDetail() {
+		return RequestRouteManagement.FRONTEND_SHOP_DETAIL.getFinalUrl();
+	}
 	
 	
 	

@@ -1,7 +1,9 @@
 package com.royail.o2o.web.route;
 
 public enum RequestRouteManagement {
-	
+	/**
+	 * shop部分的地址
+	 */
 
 	SHOP_OPERATION("shopOperation","跳转至店铺注册/编辑页面"),
 	
@@ -15,9 +17,17 @@ public enum RequestRouteManagement {
 	
 	SHOP_PRODUCT_LIST("productList","转发至商品列表的页面"),
 	
+	
+	
+	/**
+	 * frontend部分的地址
+	 */
+	
 	FRONTEND_INDEX("frontend", "index","转发至首页"),
 	
-	FRONTEND_SHOP_LIST("frontend", "shopList","转发至（全部）商品列表页面")
+	FRONTEND_SHOP_LIST("frontend", "shopList","转发至（全部）商品列表页面"),
+	
+	FRONTEND_SHOP_DETAIL("frontend","shopDetail","转发至店铺详情页")
 
 	
 	;

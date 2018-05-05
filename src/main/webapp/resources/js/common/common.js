@@ -1,8 +1,10 @@
 /**
- * 
+ * 常用的辅助工具
  */
 
-
+/**
+ * 重写 日期的格式化方法 
+ */
 Date.prototype.Format = function(fmt) {
 	var o = {
 		"M+" : this.getMonth() + 1, // 月份
@@ -25,13 +27,21 @@ Date.prototype.Format = function(fmt) {
 }
 
 
-
+/**
+ * 验证码
+ * @param img
+ * @returns
+ */
 function changeVerifyCode(img){
 	img.src="../Kaptcha?"+Math.floor(Math.random() * 100);
 }
 
 
-
+/**
+ * 从地址栏中获取你所要的数据
+ * @param name  标识符
+ * @returns
+ */
 function getQueryString(name){
 	var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
 	var r = window.location.search.substr(1).match(reg);
