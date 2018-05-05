@@ -5,14 +5,19 @@ public enum RequestRouteManagement {
 
 	SHOP_OPERATION("shopOperation","跳转至店铺注册/编辑页面"),
 	
-	SHOP_LIST("shopList","转发至店铺列表页面"),
+	SHOP_LIST("shopList","根据某个人转发至（TA）店铺列表页面"),
 	
 	SHOP_MANAGEMENT("shopManagement","转发至店铺管理页面"),
 	
 	SHOP_PRODUCT_CATEGORY("productCategory","转发至商品类别管理页面  "), //列表、新增、删除
 	
-	SHOP_PRODUCT("productOperation","转发至商品操作（新增、编辑）的页面")
+	SHOP_PRODUCT("productOperation","转发至商品操作（新增、编辑）的页面"),
 	
+	SHOP_PRODUCT_LIST("productList","转发至商品列表的页面"),
+	
+	FRONTEND_INDEX("frontend", "index","转发至首页"),
+	
+	FRONTEND_SHOP_LIST("frontend", "shopList","转发至（全部）商品列表页面")
 
 	
 	;
@@ -47,7 +52,7 @@ public enum RequestRouteManagement {
 		this.baseUrl = baseUrl;
 		this.operationUrl = operationUrl;
 		this.urlDesc = urlDesc;
-		this.finalUrl = baseUrl+ operationUrl;
+		this.finalUrl = baseUrl+"/"+ operationUrl;
 	}
 
 

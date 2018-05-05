@@ -29,11 +29,10 @@ public class PathUtils {
 
 	public static String imgShopPath(long shopId) {
 
-		String imgPath = "upload/item/shop/" + shopId+"/";
+		String imgPath = "/upload/item/shop/" + shopId+"/";
 		
-		imgPath = imgPath.replace("/", seperator);
-		
-		return imgPath ;
+		return  imgPath.replace("/", seperator);
+	
 	}
 
 	

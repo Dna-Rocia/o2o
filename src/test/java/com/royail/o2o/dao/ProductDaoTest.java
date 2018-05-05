@@ -55,6 +55,7 @@ public class ProductDaoTest extends BaseTest{
 	
 	
 	@Test
+	@Ignore
 	public void BfindProductById() throws Exception{
 		
 		long productId = 12;
@@ -77,6 +78,7 @@ public class ProductDaoTest extends BaseTest{
 	
 	
 	@Test
+	@Ignore
 	public void CupdateProduct()throws Exception{
 		Product product = new Product(5l, "jnCe测试商品1", "测试商品的描述",null, null, null, 5, null,  new ProductCategory(9l), new Shop(1l));
 		
@@ -87,12 +89,40 @@ public class ProductDaoTest extends BaseTest{
 	
 	
 	
-/*	@Test
-	public void DupdateProductCategoryToNull(){
-		productDao.updateProduct(product)
+	@Test
+	@Ignore
+	public void DlistProductCategory() throws Exception{
+		
+		Product product = new Product();
+		List<Product> list = productDao.listProduct(product, 0, 10);
+		assertEquals(10, list.size());
+		
+		
+		int count = productDao.listProductCount(product);
+		assertEquals(13, count); 
+		
+		
+		product.setProductName("测试");
+		product.setShop(new Shop(1l));
+		 list = productDao.listProduct(product, 0, 10);
+		
+		assertEquals(6, list.size());
+		
+		
+		int num = productDao.listProductCount(product);
+		assertEquals(6, num);
+		
 	}
-	*/
-	
+
+	@Test
+	public void EupdateProductCategoryToNull(){
+		//将productCategoryId为28的商品类别下面的商品的商品类别置为空
+		
+		int num = productDao.updatePcToNull(9l);
+		
+		assertEquals(5, num);
+		
+	}
 	
 	
 	

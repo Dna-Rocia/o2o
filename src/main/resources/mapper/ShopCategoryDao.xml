@@ -22,11 +22,16 @@
 
 	<sql id="listCondition">
 		<where>
-			<if test="shopCategoryCondition != null">
+				<if test="shopCategoryCondition == null">
+				and parent_id is null
+			</if>
+			<!-- <if test="shopCategoryCondition != null ">
 				and parent_id is not null
-			</if>		
-			<if test="shopCategoryCondition.shopCategoryId != null">
-				and shop_category_id = #{shopCategoryCondition.shopCategoryId}
+			</if>	 -->	
+			<if test="shopCategoryCondition != null 
+						and shopCategoryCondition.parent != null  
+						and shopCategoryCondition.parent.shopCategoryId != null">
+				and shop_category_id = #{shopCategoryCondition.parent.shopCategoryId}
 			</if>
 		</where>
 	</sql>

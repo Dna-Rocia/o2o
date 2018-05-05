@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Area {
 	//ID
-	private Integer areaId;
+	private Long areaId;
 	//權重
 	private Integer priority;
 	//名稱
@@ -18,10 +18,10 @@ public class Area {
 	
 	//setter&&getter
 	
-	public Integer getAreaId() {
+	public Long getAreaId() {
 		return areaId;
 	}
-	public void setAreaId(Integer areaId) {
+	public void setAreaId(Long areaId) {
 		this.areaId = areaId;
 	}
 	public Integer getPriority() {

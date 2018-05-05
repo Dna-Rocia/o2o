@@ -25,7 +25,7 @@ public class ShopDaoTest extends BaseTest {
 		Shop shop = new Shop();
 		PersonInfo info = new PersonInfo();
 		ShopCategory shopCategory = new ShopCategory();
-		
+
 		info.setUserId(1l);
 		shop.setOwner(info);
 
@@ -44,6 +44,25 @@ public class ShopDaoTest extends BaseTest {
 		
 	}
 	
+	@Test
+	public void testListShop2() {
+		Shop shopCondition = new Shop();
+		ShopCategory parentCategory = new ShopCategory();
+		ShopCategory childCategory = new ShopCategory();
+		
+		parentCategory.setShopCategoryId(11l);
+		childCategory.setParent(parentCategory);
+		
+		shopCondition.setShopCategory(childCategory);
+		
+	
+		List<Shop> shops = shopDao.listShop(shopCondition, 0, 6);
+		int shopCount = shopDao.listShopCount(shopCondition);
+		System.out.println("店铺列表的大小： "+shops.size() +" 家 \t\t\t总共店铺"+shopCount+" 家");
+		
+	
+		
+	}
 	
 	
 	
@@ -71,7 +90,7 @@ public class ShopDaoTest extends BaseTest {
 		
 		
 		info.setUserId(1l);
-		area.setAreaId(2);
+		area.setAreaId(2l);
 		category.setShopCategoryId(1l);
 		
 		Shop shop = new Shop("insert",0);

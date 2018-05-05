@@ -86,7 +86,7 @@ public class ShopServiceTest extends BaseTest{
 		
 		
 		info.setUserId(1l);
-		area.setAreaId(2);
+		area.setAreaId(2l);
 		category.setShopCategoryId(18l);
 		
 		Shop shop = new Shop("insert",0);

@@ -7,18 +7,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.royail.o2o.dao.ProductCategoryDao;
+import com.royail.o2o.dao.ProductDao;
 import com.royail.o2o.dto.ProductCategoryExecution;
 import com.royail.o2o.entity.ProductCategory;
 import com.royail.o2o.enums.ProductCategoryStateEnum;
 import com.royail.o2o.exception.ProductCategoryException;
 import com.royail.o2o.service.ProductCategoryService;
-import com.royail.o2o.utils.PageCalculatorUtils;
 
 @Service
 public class ProductCategoryServiceImpl implements ProductCategoryService{
 
 	@Autowired
 	private ProductCategoryDao productCategoryDao;
+	@Autowired
+	private ProductDao productDao;
 	
 	
 	@Override
@@ -76,8 +78,17 @@ public class ProductCategoryServiceImpl implements ProductCategoryService{
 	@Transactional
 	public ProductCategoryExecution deleteProductCategory(long productCategoryId, long shopId)
 			throws ProductCategoryException {
-		// TODO 将此商品类别下的商品类别ID 置为空
+		//接触tb_product 里的商品  与该productCategoryId的关联   ======= 将此商品类别下的商品 的    类别ID 置为空
+		try {
+			int num = productDao.updatePcToNull(productCategoryId);
+			if (num < 0) {
+				throw new ProductCategoryException("商品类别删除失败");
+			}
+		} catch (Exception e) {
+			throw new ProductCategoryException("deleteProductCategory error:"+e.getMessage());
+		}
 		
+		//删除该productCategory
 		try {
 			int  num = productCategoryDao.deleteProductCategory(productCategoryId, shopId);
 			if (num <= 0) {

@@ -36,7 +36,7 @@ public class ShopAdminController {
 	 * productCategory 的路由（转发）管理
 	 */
 	
-	@RequestMapping(value = "/categorylist", method = RequestMethod.GET)
+	@RequestMapping(value = "/productcategorylist", method = RequestMethod.GET)
 	public String  productCategoryList() {
 		return RequestRouteManagement.SHOP_PRODUCT_CATEGORY.getFinalUrl();
 		
@@ -61,13 +61,17 @@ public class ShopAdminController {
 	/**
 	 * product 的路由（转发）管理
 	 */
-	@RequestMapping(value = "/productmanagement", method = RequestMethod.GET)
-	public String  product() {
+	@RequestMapping(value = "/productoperation", method = RequestMethod.GET)
+	public String  productOperation() {
 		return RequestRouteManagement.SHOP_PRODUCT.getFinalUrl();
 		
 	}
 	
-	
+	@RequestMapping(value = "/productmanagement", method = RequestMethod.GET)
+	public String  productList() {
+		return RequestRouteManagement.SHOP_PRODUCT_LIST.getFinalUrl();
+		
+	}
 	
 	
 	

@@ -13,13 +13,16 @@ import com.royail.o2o.dao.ProductDao;
 import com.royail.o2o.dao.ProductImgDao;
 import com.royail.o2o.dto.ImageHolder;
 import com.royail.o2o.dto.ProductExecution;
+import com.royail.o2o.dto.ShopExecution;
 import com.royail.o2o.entity.Product;
 import com.royail.o2o.entity.ProductImg;
 import com.royail.o2o.entity.Shop;
 import com.royail.o2o.enums.ProductStateEnum;
+import com.royail.o2o.enums.ShopStateEnum;
 import com.royail.o2o.exception.ProductOperationException;
 import com.royail.o2o.service.ProductService;
 import com.royail.o2o.utils.ImgUtils;
+import com.royail.o2o.utils.PageCalculatorUtils;
 import com.royail.o2o.utils.PathUtils;
 
 @Service
@@ -181,6 +184,31 @@ public class ProductServiceImpl implements ProductService{
 		productImgDao.deleteImgByProductId(productId);
 		
 	}
+
+
+	@Override
+	public ProductExecution listProduct(Product product, int pageIndex, int pageSize) {
+		
+		int productLength = productDao.listProductCount(product);
+		ProductExecution execution = new ProductExecution();
+
+		if (productLength > 0) {
+			int rowIndex = PageCalculatorUtils.calculatorRowIndex(pageIndex, pageSize);
+			List<Product> products = productDao.listProduct(product, rowIndex, pageSize);
+			if (products != null) {
+				execution.setProducts(products);
+			}
+			execution.setCount(productLength);
+		} else {
+			execution.setState(ShopStateEnum.INNER_ERROR.getState());
+		}
+
+		return execution;
+		
+	}
+	
+	
+	
 	
 	
 	

@@ -16,10 +16,13 @@ public class ShopCategoryServiceTest extends BaseTest {
 	
 	@Test
 	public void testListShopCategory() {
-		ShopCategory shopCategory = new ShopCategory();
-	
+		ShopCategory parentCategory = new ShopCategory(), childCategory = new ShopCategory();
+		parentCategory.setShopCategoryId(27l);
+		childCategory.setParent(parentCategory);
+		
+//		 execution = shopCategoryService.listShopCategory(childCategory);
 
-		ShopCategoryExecution execution = shopCategoryService.shopCategoryList(shopCategory,0, 3);
+		ShopCategoryExecution execution = shopCategoryService.shopCategoryList(childCategory,0, 10);
 		System.out.println("条件1：用户ID为1的\t\t\t当前查的店铺有： "+execution.getShopCategories().size() +" 家 \t\t\t总共拥有店铺"+execution.getCount()+" 家");
 		
 		

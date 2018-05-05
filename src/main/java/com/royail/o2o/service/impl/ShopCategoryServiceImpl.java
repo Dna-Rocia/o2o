@@ -41,7 +41,24 @@ public class ShopCategoryServiceImpl implements ShopCategoryService{
 	}
 	
 	
-	
+	@Override
+	public ShopCategoryExecution listShopCategory(ShopCategory shopCategoryCondition) {
+		int categoryLength = shopCategoryDao.listShopCategoryCount(shopCategoryCondition);
+		
+		ShopCategoryExecution execution = new ShopCategoryExecution();
+		
+		if (categoryLength > 0) {
+			List<ShopCategory>  shopCategories = shopCategoryDao.shopCategoryList(shopCategoryCondition);
+			if (shopCategories != null) {
+				execution.setShopCategories(shopCategories);
+			}
+			execution.setCount(categoryLength);
+		}else {
+			execution.setState(ShopCategoryStateEnum.INNER_ERROR.getState());
+		}
+		
+		return execution;
+	}
 
 	
 	

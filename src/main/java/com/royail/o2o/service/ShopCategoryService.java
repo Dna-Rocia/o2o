@@ -7,5 +7,6 @@ public interface ShopCategoryService {
 
 	ShopCategoryExecution shopCategoryList( ShopCategory shopCategoryCondition, int pageIndex, int PageSize);
 	
+	ShopCategoryExecution listShopCategory( ShopCategory shopCategoryCondition);
 	
 }

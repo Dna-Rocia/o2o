@@ -16,19 +16,21 @@ public interface ProductDao {
 	
 	int updateProduct(Product product);
 	
-	
+	/**
+	 * 删除商品之前，将商品的类别置为空
+	 * @param productCategoryId
+	 * @return
+	 */
 	int updatePcToNull(long productCategoryId);
 	
 	
 	Product findProduct(Long productId);
 	
 	
+	List<Product> listProduct(@Param("product")Product product,@Param("rowIndex") int rowIndex, @Param("pageSize") int pageSize);
 	
 	
-	//List<Product> listProduct(@Param("product")Product product,@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);
-	
-	
-	//int listProductCount(@Param("product")Product product);
+	int listProductCount(@Param("product")Product product);
 	
 	
 }

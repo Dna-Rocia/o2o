@@ -1,11 +1,7 @@
 package com.royail.o2o.service.impl;
 
-import java.io.File;
-import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
-
-import javax.management.RuntimeErrorException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,6 +82,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
+	@Transactional
 	public ShopExecution updateShop(Shop shop, ImageHolder imageHolder) throws ShopOperationException {
 		if (shop == null || shop.getShopId() == null) {
 			return new ShopExecution(ShopStateEnum.NULL_SHOP);

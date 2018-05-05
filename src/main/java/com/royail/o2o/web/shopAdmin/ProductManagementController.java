@@ -261,4 +261,54 @@ public class ProductManagementController {
 	}
 	
 	
+	private Product compactProduct(long shopId,long productCategoryId,String productName) {
+		Product product = new Product();
+		product.setShop(new Shop(shopId));
+		if (productCategoryId != -1l) {
+			product.setProductCategory(new ProductCategory(productCategoryId));
+		}
+		
+		if (productName != null) {
+			product.setProductName(productName);
+		}
+		return product;
+	}
+	
+	
+
+	@RequestMapping(value = "/product/list", method = RequestMethod.GET)
+	@ResponseBody
+	private Map<String, Object> listProduct(HttpServletRequest request) {
+			
+		Map<String, Object> map = new HashMap<String, Object>();
+		//当前页码
+		int pageIndex = HttpServletRequestUtils.getInt(request, "pageIndex");
+		//页码的上限
+		int pageSize = HttpServletRequestUtils.getInt(request, "pageSize");
+		//当前店铺
+		Shop shop = (Shop)request.getSession().getAttribute("currentShop");
+		
+		if (shop != null && shop.getShopId() != null && pageIndex > -1 && pageSize > -1) {
+			
+			Long productCategoryId = HttpServletRequestUtils.getLong(request, "productCategoryId");
+			String productName = HttpServletRequestUtils.getString(request, "productName");
+			Product product = compactProduct(shop.getShopId(), productCategoryId, productName);
+			
+			ProductExecution execution = productService.listProduct(product, pageIndex, pageSize);
+			map.put("productList", execution.getProducts());
+			map.put("count", execution.getCount());
+			map.put("success", true);
+			
+		}else {
+			map.put("success", false);
+			map.put("errMsg", "empty shop or pageIndex or pageSize");
+		}
+		
+		return map;
+	}
+	
+	
+	
+	
+	
 }
