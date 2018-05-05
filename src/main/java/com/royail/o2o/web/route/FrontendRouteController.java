@@ -1,14 +1,12 @@
-package com.royail.o2o.web.frontend;
+package com.royail.o2o.web.route;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.royail.o2o.web.shopAdmin.RequestRouteManagement;
-
 @Controller
 @RequestMapping("/frontend")
-public class FrontendController {
+public class FrontendRouteController {
 
 	
 	

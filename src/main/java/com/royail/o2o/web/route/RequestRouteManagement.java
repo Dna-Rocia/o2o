@@ -1,4 +1,4 @@
-package com.royail.o2o.web.shopAdmin;
+package com.royail.o2o.web.route;
 
 public enum RequestRouteManagement {
 	

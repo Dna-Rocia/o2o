@@ -11,6 +11,7 @@ public interface ProductCategoryDao {
 	
 	List<ProductCategory> listProductCategory(@Param("productCategoryCondition") ProductCategory productCategory);
 	
+	
 	int listProductCategoryCount(@Param("productCategoryCondition") ProductCategory productCategory);
 	
 	
