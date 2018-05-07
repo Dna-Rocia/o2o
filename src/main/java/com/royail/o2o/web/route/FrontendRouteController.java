@@ -30,5 +30,11 @@ public class FrontendRouteController {
 	}
 	
 	
+	@RequestMapping(value="/productdetail",method=RequestMethod.GET)
+	private String  productDetail() {
+		return RequestRouteManagement.FRONTEND_PRODUCT_DETAIL.getFinalUrl();
+	}
+	
+	
 	
 }

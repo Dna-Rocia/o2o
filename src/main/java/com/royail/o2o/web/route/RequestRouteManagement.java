@@ -27,7 +27,9 @@ public enum RequestRouteManagement {
 	
 	FRONTEND_SHOP_LIST("frontend", "shopList","转发至（全部）商品列表页面"),
 	
-	FRONTEND_SHOP_DETAIL("frontend","shopDetail","转发至店铺详情页")
+	FRONTEND_SHOP_DETAIL("frontend","shopDetail","转发至店铺详情页"),
+	
+	FRONTEND_PRODUCT_DETAIL("frontend","productDetail","转发至商品详情页")
 
 	
 	;
