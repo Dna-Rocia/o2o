@@ -107,10 +107,18 @@ $(function(){
 				var total = $('.list-div .card').length;
 				//若总数达到条件列出来的总数一致，则停止后台的加载
 				if (total >= maxItems) {
-					// 加载完毕，则注销无限加载事件，以防不必要的加载
-					$.detachInfiniteScroll($('.infinite-scroll'));
-					// 删除加载提示符
-					$('.infinite-scroll-preloader').remove();
+					/**
+					 *  加载完毕，则注销无限加载事件，以防不必要的加载 
+					 *  存在bug:当取消掉这个事件，那么在当前页面再搜索商品超过pageSize的时候，就不能继续加载了
+					 */
+//					$.detachInfiniteScroll($('.infinite-scroll'));
+					/**
+					 * 加载提示符 
+					 * 之前是删除，现在改隐藏
+					 */ 
+					$('.infinite-scroll-preloader').hide();
+				}else{
+					$('.infinite-scroll-preloader').show();
 				}
 				pageNum += 1;
 				loading = false;
@@ -164,7 +172,7 @@ $(function(){
     /**
      * 需要查询商品名字发生变化，重置页码，清空原先查询出来的列表信息，再根据新的条件进行查询
      */
-	$('#search').on('input', function(e) {
+	$('#search').on('change', function(e) {
 		productName = e.target.value;
 		$('.list-div').empty();
 		pageNum = 1;
